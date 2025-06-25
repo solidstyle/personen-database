@@ -17,7 +17,13 @@
     "deploy:prod": "npm run db:push && vercel --prod",
     "deploy:preview": "npm run db:push && vercel",
     "update:schema": "npm run db:push && npm run db:generate",
-    "full:deploy": "npm run update:schema && git add . && git commit -m 'Database schema update' && git push"
+    "full:deploy": "npm run update:schema && git add . && git commit -m 'Database schema update' && git push",
+    "setup:local": "npm install && npm run db:push && npm run db:seed",
+    "setup:fresh": "npm run db:reset && npm run db:seed",
+    "check:env": "node -e \"console.log('DATABASE_URL:', process.env.DATABASE_URL ? 'Set' : 'Missing')\"",
+    "deploy:check": "npm run build && npm run lint",
+    "clean": "rm -rf .next && rm -rf node_modules/.cache",
+    "logs:vercel": "vercel logs"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
