@@ -123,3 +123,65 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Database Management Scripts
+
+### 🗄️ **Database Scripts**
+
+```bash
+# Database schema naar productie pushen
+npm run db:push
+
+# Database schema ophalen van productie
+npm run db:pull
+
+# Prisma client opnieuw genereren
+npm run db:generate
+
+# Database studio openen (visuele database editor)
+npm run db:studio
+
+# Database resetten (VOORZICHTIG!)
+npm run db:reset
+```
+
+### 🚀 **Deployment Scripts**
+
+```bash
+# Snelle productie deployment (database + vercel)
+npm run deploy:prod
+
+# Preview deployment (database + vercel preview)
+npm run deploy:preview
+
+# Schema updaten en client regenereren
+npm run update:schema
+
+# Volledige workflow: schema + git + deploy
+npm run full:deploy
+```
+
+### 📋 **Workflow Voorbeelden**
+
+**1. Nieuwe database kolom toevoegen:**
+```bash
+# 1. Pas prisma/schema.prisma aan
+# 2. Update database en genereer client
+npm run update:schema
+# 3. Test lokaal
+npm run dev
+# 4. Deploy naar productie
+npm run deploy:prod
+```
+
+**2. Snelle iteratie tijdens ontwikkeling:**
+```bash
+npm run db:push     # Schema naar database
+npm run dev         # Test lokaal
+npm run deploy:preview  # Test op Vercel preview
+```
+
+**3. Database inspecteren:**
+```bash
+npm run db:studio   # Opent visuele database editor
+```
