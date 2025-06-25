@@ -1,22 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personen Database Website
 
-## Getting Started
+Een moderne web applicatie gebouwd met Next.js, TypeScript, en Prisma voor het beheren van een personen database.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend**: Modern React interface met Tailwind CSS
+- **Database**: SQLite database met Prisma ORM
+- **Admin Panel**: Volledige admin functionaliteit voor beheer
+- **Responsive Design**: Werkt op desktop en mobiel
+- **Dark Mode**: Automatische dark mode ondersteuning
+- **Vercel Ready**: Geoptimaliseerd voor Vercel deployment
+
+## Database Schema
+
+De applicatie gebruikt een simpele `Person` tabel met:
+- `id`: Unieke identifier (auto-increment)
+- `name`: Naam van de persoon
+- `age`: Leeftijd van de persoon
+- `createdAt`: Aanmaakdatum
+- `updatedAt`: Laatste wijzigingsdatum
+
+## Installatie & Setup
+
+1. **Clone het project en navigeer naar de website folder**
+   ```bash
+   cd website
+   ```
+
+2. **Installeer dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Setup de database**
+   ```bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   ```
+
+4. **Start de development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open de applicatie**
+   Open [http://localhost:3000](http://localhost:3000) in je browser
+
+## Gebruik
+
+### Hoofdpagina (/)
+- Voeg nieuwe personen toe via het formulier
+- Bekijk alle toegevoegde personen in een grid layout
+- Navigeer naar het admin panel
+
+### Admin Panel (/admin)
+- Bekijk statistieken over de database
+- Beheer alle personen in een tabel weergave
+- Verwijder personen met bevestiging
+
+## API Endpoints
+
+- `GET /api/persons` - Haal alle personen op
+- `POST /api/persons` - Voeg een nieuwe persoon toe
+- `DELETE /api/persons/[id]` - Verwijder een specifieke persoon
+
+## Deployment naar Vercel
+
+1. **Push naar GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Connect met Vercel**
+   - Ga naar [vercel.com](https://vercel.com)
+   - Connect je GitHub repository
+   - Vercel detecteert automatisch de Next.js configuratie
+
+3. **Database voor productie**
+   Voor productie gebruik, vervang SQLite door een cloud database (PostgreSQL op Vercel, PlanetScale, etc.)
+
+## Tech Stack
+
+- **Framework**: Next.js 15 met App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: SQLite (local) / PostgreSQL (production)
+- **ORM**: Prisma
+- **Deployment**: Vercel
+
+## Project Structuur
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+website/
+├── src/
+│   ├── app/
+│   │   ├── admin/          # Admin panel pagina
+│   │   ├── api/persons/    # API routes
+│   │   └── page.tsx        # Hoofdpagina
+│   └── lib/
+│       └── prisma.ts       # Prisma client configuratie
+├── prisma/
+│   ├── schema.prisma       # Database schema
+│   └── migrations/         # Database migraties
+└── README.md
+```
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
